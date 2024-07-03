@@ -3,3 +3,6 @@ Utilised a Rest API to get the forecast weather data of New Delhi for the next 1
 
 
 Got the API for free (trial 14 days) from the weatherapi.com
+
+
+Only selected temperature and conditions of the place for the visulaisation but one can chose numerous other parameters including wind directions, moon conditions, etc.
