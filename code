@@ -1,0 +1,32 @@
+def Weather_status(City,Days):
+  key="dd76fd4170d8494dbc362527243006"
+  url="https://api.weatherapi.com/v1/forecast.json"
+  par={
+      "key": key,
+      "q": City,
+      "days": Days
+  }
+  data=[]
+  response=rq.get(url,params=par)
+  for i in response.json()['forecast']['forecastday']:
+    date=i['date']
+    max_temp=i['day']['maxtemp_c']
+    min_temp=i['day']['mintemp_c']
+    avg_temp=i['day']['avgtemp_c']
+    condition=i['day']['condition']['text']
+    data.append([date,max_temp,min_temp,avg_temp,condition])
+
+  with open("/content/drive/MyDrive/weather_data.csv",mode="w",newline="") as f:
+    writer=csv.writer(f)
+    writer.writerow(["Date","Max_Temp","Min_Temp","Avg_Temp","Condition"])  #header
+    writer.writerows(data)
+
+   return data
+
+
+c=str(input("Enter the name of the city : "))
+d=int(input("Enter the number of days : "))
+# print(Weather_status(c,d))
+Weather_status(c,d)
+
+
